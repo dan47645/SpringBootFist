@@ -29,7 +29,7 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
         SysUserDto user = userService.findByUserName(username);
         if (user != null) {
             List<PermissionDto> permissions = permissionServer.findByUserId(user.getId());
-            List<GrantedAuthority> grantedAuthorities = new ArrayList <>();
+            List<GrantedAuthority> grantedAuthorities = new ArrayList <GrantedAuthority>();
             for (PermissionDto permission : permissions) {
                 if (permission != null && permission.getName()!=null) {
 	                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getName());

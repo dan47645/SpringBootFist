@@ -32,12 +32,12 @@ public class MyInvocationSecurityMetadataSourceService  implements
      * 加载权限表中所有权限
      */
     public void loadResourceDefine(){
-        map = new HashMap<>();
+        map = new HashMap<String, Collection<ConfigAttribute>>();
         Collection<ConfigAttribute> array;
         ConfigAttribute cfg;
         List<Permission> permissions = permissionDao.findAll();
         for(Permission permission : permissions) {
-            array = new ArrayList<>();
+            array = new ArrayList<ConfigAttribute>();
             cfg = new SecurityConfig(permission.getName());
             //此处只添加了用户的名字，其实还可以添加更多权限的信息，例如请求方法到ConfigAttribute的集合中去。此处添加的信息将会作为MyAccessDecisionManager类的decide的第三个参数。
             array.add(cfg);

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    
+</head>
+<body>
+<div th:fragment="menu">
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">菜单</li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="icon icon-user"></i> 
+                            <span>个人信息</span>
+                            <span class="pull-right-container">
+                            </span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="icon icon-file"></i> 
+                            <span>页面演示</span>
+                            <span class="pull-right-container">
+                                <i class="icon icon-angle-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 空白页</a></li>
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 404页</a></li>
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 系统设置</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="icon icon-columns"></i> 
+                            <span>用户管理</span>
+                            <span class="pull-right-container">
+                                <i class="icon icon-angle-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 多选和单选框</a></li>
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 步骤条</a></li>
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 用户列表</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="javascript:;">
+                            <i class="icon icon-sign-blank"></i> 
+                            <span>自定义菜单</span>
+                            <span class="pull-right-container">
+                                <i class="icon icon-angle-left"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 定义菜单</a></li>
+                            <li><a href="#"><i class="icon icon-circle-blank"></i> 删除菜单</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </aside> 
+
+</div>
+    
+</body>
+</html>

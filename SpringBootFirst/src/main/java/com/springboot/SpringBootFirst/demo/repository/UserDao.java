@@ -11,4 +11,7 @@ public interface UserDao extends JpaRepository<SysUser, String>,JpaSpecification
 	
 	@Query("select u from SysUser u where u.username =:userName")
 	SysUser findByUserName(@Param("userName") String userName);
+	
+	@Query("select u from SysUser u where u.username =:userName and u.password=:password")
+	SysUser findByUserNameAndPwd(@Param("userName") String userName,@Param("password")String password);
 }

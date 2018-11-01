@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
+import com.springboot.SpringBootFirst.demo.Service.UserService;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -29,11 +31,42 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(customUserService()); //user Details Service验证
 
     }
+    
+    @Autowired
+    private UserService userService;
+    @Bean
+    public MyUsernamePasswordAuthenticationFilter loginFilter()
+            throws Exception {
+    	MyUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter = new MyUsernamePasswordAuthenticationFilter();
+    	customUsernamePasswordAuthenticationFilter.setAuthenticationSuccessHandler(customSuccessHandler());
+        customUsernamePasswordAuthenticationFilter.setAuthenticationFailureHandler(customFailureHandler());
+    	customUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+        customUsernamePasswordAuthenticationFilter.setUserService(userService);
+        return customUsernamePasswordAuthenticationFilter;
+    }
+    
+    @Bean
+    public FailureHandler customFailureHandler() {
+        FailureHandler customFailureHandler = new FailureHandler();
+        customFailureHandler.setDefaultFailureUrl("/login?error");
+        return customFailureHandler;
+    }
+
+    @Bean
+    public SuccessHandler customSuccessHandler() {
+        SuccessHandler customSuccessHandler = new SuccessHandler();
+        customSuccessHandler.setDefaultTargetUrl("/");
+        return customSuccessHandler;
+    }
+    
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http.authorizeRequests()
 	        .antMatchers("/css/**").permitAll()
+	        .antMatchers("/js/**").permitAll()
+	        .antMatchers("/dist/**").permitAll()
+	        .antMatchers("/img/**").permitAll()
 	        .anyRequest().authenticated() //任何请求,登录后可以访问
 	        .and()
 	        .formLogin()
@@ -43,6 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	        .permitAll() //登录页面用户任意访问
 	        .and()
 	        .logout().permitAll(); //注销行为任意访问
-    	http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class);
+    	http.addFilterBefore(myFilterSecurityInterceptor, FilterSecurityInterceptor.class).addFilter(loginFilter())
+    		.csrf().disable();
     }
 }

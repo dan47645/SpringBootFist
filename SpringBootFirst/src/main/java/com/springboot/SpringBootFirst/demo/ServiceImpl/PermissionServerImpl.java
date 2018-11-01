@@ -42,11 +42,11 @@ public class PermissionServerImpl implements PermissionServer {
 
 	@Override
 	public List<PermissionDto> findByUserId(String id) {
-		StringBuilder sql = new StringBuilder(" select p.* from Sys_User u ");
-		sql.append(" LEFT JOIN sys_role_user sru on u.id= sru.Sys_User_id ");
-		sql.append(" LEFT JOIN Sys_Role r on sru.Sys_Role_id=r.id ");
-		sql.append(" LEFT JOIN Sys_permission_role spr on spr.role_id=r.id ");
-		sql.append(" LEFT JOIN Sys_permission p on p.id =spr.permission_id  where u.id = :id ");
+		StringBuilder sql = new StringBuilder(" select p.* from sys_user u ");
+		sql.append(" LEFT JOIN sys_role_user sru on u.id= sru.sys_user_id ");
+		sql.append(" LEFT JOIN sys_role r on sru.sys_role_id=r.id ");
+		sql.append(" LEFT JOIN sys_permission_role spr on spr.role_id=r.id ");
+		sql.append(" LEFT JOIN sys_permission p on p.id =spr.permission_id  where u.id = :id ");
 	
 		Query query = entityManager.createNativeQuery(sql.toString(),Permission.class);
 		query.setParameter("id", id);

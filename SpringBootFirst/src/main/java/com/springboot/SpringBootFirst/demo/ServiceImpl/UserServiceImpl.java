@@ -23,4 +23,15 @@ public class UserServiceImpl implements UserService {
 		return sysUserDto;
 	}
 
+	@Override
+	public SysUserDto findByUserNameAndPwd(String userName, String pwd) {
+		SysUser sysUser = this.userDao.findByUserNameAndPwd(userName,pwd);
+		SysUserDto sysUserDto = new SysUserDto();
+		if(sysUser==null){
+			return null;
+		}
+		BeanUtils.copyProperties(sysUser, sysUserDto);
+		return sysUserDto;
+	}
+
 }

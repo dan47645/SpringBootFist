@@ -1,9 +1,14 @@
 package com.springboot.SpringBootFirst.demo.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.springboot.SpringBootFirst.demo.util.Audited;
@@ -31,6 +36,11 @@ public class Permission extends Audited implements Serializable {
     //父节点id
 	@Column(name="pid")
     private int pid;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="sys_permission_role",joinColumns=@JoinColumn(name="permission_id"),
+			inverseJoinColumns=@JoinColumn(name="role_id"))
+	private List<SysRole> roles;
 
     public String getName() {
         return name;

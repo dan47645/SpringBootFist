@@ -33,7 +33,7 @@ public class BaseErrorController extends AbstractErrorController {
 			System.out.println("key:"+m.getKey()+" ----   value:"+m.getValue());
 		}
 		
-		return null;
+		return "/handelError";
 	}
 
 	

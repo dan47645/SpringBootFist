@@ -1,0 +1,11 @@
+.styWi {
+	min-width: 102%;
+}
+
+@media (max-width: 767px){
+	.styWi {
+    background-color: white !important;
+    min-width: 100% !important;
+}
+}
+

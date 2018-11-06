@@ -101,6 +101,14 @@
 	    <version>1.7.25</version>
 	</dependency>
 	
+	<!-- 阿里的fastjson -->
+	<dependency>
+	    <groupId>com.alibaba</groupId>
+	    <artifactId>fastjson</artifactId>
+	    <version>1.2.51</version>
+	</dependency>
+	
+	
 
     	
     	

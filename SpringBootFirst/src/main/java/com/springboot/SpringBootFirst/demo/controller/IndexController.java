@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.springboot.SpringBootFirst.demo.util.Msg;
+import com.springboot.SpringBootFirst.demo.util.ResultObject;
 
 @Controller
 public class IndexController {
@@ -30,7 +32,11 @@ public class IndexController {
     @RequestMapping("/admin")
     @ResponseBody
     public String hello(){
-        return "hello admin";
+    	ResultObject msg = new ResultObject("测试内容", "123");
+    	if(2>1){
+    		throw new RuntimeException("就是错了，怎么的把！");
+    	}
+        return msg.toString();
     }
 
 }

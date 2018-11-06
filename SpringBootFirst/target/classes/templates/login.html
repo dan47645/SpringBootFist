@@ -27,7 +27,7 @@
                 <div class="logo">
                     <a href="#">登录</a>
                 </div>
-                <form name="form" id="form"  action="login" method="POST">
+                <form name="form" id="form"  action="user_login" method="POST">
                 	<div class="alert login-alert" th:if="${session!=null and session.SPRING_SECURITY_LAST_EXCEPTION!=null}">
                         <label style="color:red">
                             <span class="logintips" th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message}">

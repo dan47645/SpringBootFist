@@ -36,7 +36,7 @@ public class MyUsernamePasswordAuthenticationFilter extends UsernamePasswordAuth
     UserService userService;
 
 	public MyUsernamePasswordAuthenticationFilter() {
-		new AntPathRequestMatcher("/login", "POST");
+		new AntPathRequestMatcher("/user_login", "POST");
 	}
 
 	public Authentication attemptAuthentication(HttpServletRequest request,

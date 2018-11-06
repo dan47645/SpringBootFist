@@ -2,7 +2,7 @@ package com.springboot.SpringBootFirst;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @version v.0.1  
  */
 @SpringBootApplication
-public class App extends SpringBootServletInitializer  {
+public class App extends WebMvcConfigurerAdapter  {
 
     public static void main(String[] args) {
        SpringApplication.run(App.class, args);
